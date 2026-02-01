@@ -1,0 +1,6 @@
+name = "lucky-diary"
+main = "src/index.js"
+compatibility_date = "2024-01-01"
+
+[vars]
+DIARY_TITLE = "Lucky's Trading Diary 🍀"
