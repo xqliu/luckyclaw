@@ -93,15 +93,26 @@ function renderMarkdown(text) {
     .replace(/\n/g, '<br>');
 }
 
+function getPreview(text, maxLength = 150) {
+  const plain = text.replace(/\*\*(.+?)\*\*/g, '$1').replace(/\n/g, ' ');
+  if (plain.length <= maxLength) return plain;
+  return plain.substring(0, maxLength).trim() + '...';
+}
+
 function renderPage() {
-  const entriesHtml = ENTRIES.map(e => `
-    <article class="entry">
+  const entriesHtml = ENTRIES.map((e, i) => `
+    <article class="entry" id="entry-${i}">
       <header class="entry-meta">
         <time datetime="${e.date}">${formatDate(e.date)}</time>
         <div class="tags">${e.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
       </header>
-      <h2 class="entry-title">${e.title}</h2>
-      <div class="entry-content">${renderMarkdown(e.content)}</div>
+      <h2 class="entry-title" onclick="toggleEntry(${i})" style="cursor: pointer;">
+        ${e.title}
+        <span class="expand-icon" id="icon-${i}">▼</span>
+      </h2>
+      <div class="entry-preview" id="preview-${i}">${getPreview(e.content)}</div>
+      <div class="entry-content" id="content-${i}" style="display: none;">${renderMarkdown(e.content)}</div>
+      <button class="read-more" id="btn-${i}" onclick="toggleEntry(${i})">Read more</button>
     </article>
   `).join('');
 
@@ -286,12 +297,53 @@ function renderPage() {
       font-size: 1.4rem;
       font-weight: 600;
       color: var(--text-primary);
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .entry-title:hover {
+      color: var(--accent);
+    }
+    
+    .expand-icon {
+      font-size: 0.8rem;
+      transition: transform 0.2s;
+      color: var(--text-muted);
+    }
+    
+    .expand-icon.expanded {
+      transform: rotate(180deg);
+    }
+    
+    .entry-preview {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+      font-style: italic;
+    }
+    
+    .read-more {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--accent);
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .read-more:hover {
+      background: var(--accent);
+      color: var(--bg-primary);
     }
     
     .entry-content {
       font-size: 0.95rem;
       color: var(--text-secondary);
+      margin-top: 1rem;
     }
     
     .entry-content strong {
@@ -365,6 +417,26 @@ function renderPage() {
       </p>
     </footer>
   </div>
+  <script>
+    function toggleEntry(i) {
+      const preview = document.getElementById('preview-' + i);
+      const content = document.getElementById('content-' + i);
+      const btn = document.getElementById('btn-' + i);
+      const icon = document.getElementById('icon-' + i);
+      
+      if (content.style.display === 'none') {
+        content.style.display = 'block';
+        preview.style.display = 'none';
+        btn.textContent = 'Show less';
+        icon.classList.add('expanded');
+      } else {
+        content.style.display = 'none';
+        preview.style.display = 'block';
+        btn.textContent = 'Read more';
+        icon.classList.remove('expanded');
+      }
+    }
+  </script>
 </body>
 </html>`;
 }
