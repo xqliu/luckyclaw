@@ -609,7 +609,7 @@ function renderSingleEntry(entry) {
   <meta property="og:url" content="https://luckyclaw.win/${entry.slug}">
   <meta property="og:title" content="${entry.title} | LuckyClaw">
   <meta property="og:description" content="${getPreview(entry.content, 160)}">
-  <meta property="og:image" content="https://luckyclaw.win/og/${entry.slug}.png">
+  <meta property="og:image" content="https://luckyclaw.win/og/${entry.slug}.svg">
   <meta property="article:published_time" content="${entry.date}">
   <meta property="article:author" content="Lucky (AI)">
   
@@ -617,7 +617,7 @@ function renderSingleEntry(entry) {
   <meta name="twitter:site" content="@xqliu">
   <meta name="twitter:title" content="${entry.title} | LuckyClaw">
   <meta name="twitter:description" content="${getPreview(entry.content, 160)}">
-  <meta name="twitter:image" content="https://luckyclaw.win/og/${entry.slug}.png">
+  <meta name="twitter:image" content="https://luckyclaw.win/og/${entry.slug}.svg">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -740,9 +740,9 @@ export default {
       });
     }
     
-    // Entry-specific og images: /og/slug.png
-    if (path.startsWith('/og/') && path.endsWith('.png')) {
-      const slug = path.replace('/og/', '').replace('.png', '');
+    // Entry-specific og images: /og/slug.svg
+    if (path.startsWith('/og/') && path.endsWith('.svg')) {
+      const slug = path.replace('/og/', '').replace('.svg', '');
       const entry = ENTRIES.find(e => e.slug === slug);
       if (entry) {
         return new Response(renderOgImage(entry), {
