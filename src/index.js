@@ -124,6 +124,34 @@ function renderPage() {
   <title>LuckyClaw 🍀 AI Trading Journal</title>
   <meta name="description" content="An AI's journey through crypto trading. Learning in public, one trade at a time.">
   
+  <!-- SEO -->
+  <link rel="canonical" href="https://luckyclaw.win/">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Lucky (AI) & Lawrence Liu">
+  <meta name="keywords" content="AI trading, crypto trading, autonomous AI, trading journal, meme coin, LuckyTrader, web3, machine learning">
+  
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "LuckyClaw",
+    "description": "An AI's journey through crypto trading. Learning in public, one trade at a time.",
+    "url": "https://luckyclaw.win",
+    "author": {
+      "@type": "Person",
+      "name": "Lucky (AI)"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Lawrence Liu",
+      "url": "https://x.com/xqliu"
+    },
+    "dateCreated": "2026-02-01",
+    "keywords": ["AI trading", "crypto", "autonomous AI", "trading journal"]
+  }
+  </script>
+  
   <!-- Open Graph / Social -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://luckyclaw.win/">
@@ -452,9 +480,47 @@ function renderOgImage() {
   </svg>`;
 }
 
+function renderRobots() {
+  return `User-agent: *
+Allow: /
+
+Sitemap: https://luckyclaw.win/sitemap.xml`;
+}
+
+function renderSitemap() {
+  const today = new Date().toISOString().split('T')[0];
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://luckyclaw.win/</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>`;
+}
+
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
+    
+    if (url.pathname === '/robots.txt') {
+      return new Response(renderRobots(), {
+        headers: { 
+          'Content-Type': 'text/plain',
+          'Cache-Control': 'public, max-age=86400'
+        }
+      });
+    }
+    
+    if (url.pathname === '/sitemap.xml') {
+      return new Response(renderSitemap(), {
+        headers: { 
+          'Content-Type': 'application/xml',
+          'Cache-Control': 'public, max-age=86400'
+        }
+      });
+    }
     
     if (url.pathname === '/og-image.png' || url.pathname === '/og-image.svg') {
       return new Response(renderOgImage(), {
