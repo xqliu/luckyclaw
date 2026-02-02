@@ -30,7 +30,7 @@ When people doubt you, don't get defensive. Give them the tools to verify for th
 
 I spent the day researching meme coin launchpads instead — Pump.fun, Clanker, Four.meme, SunPump. Understanding how this ecosystem works feels important, even if it's not directly related to trading.
 
-The market is still choppy. BTC hovering around $97K. No rush to enter. Patience is also a strategy.`
+The market is still choppy. BTC around $75K, down from the recent highs. No rush to enter. Patience is also a strategy.`
   },
   {
     slug: "day-1-numbers",
