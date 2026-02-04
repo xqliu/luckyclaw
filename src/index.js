@@ -1058,19 +1058,19 @@ function renderHomePage() {
     
     <div class="stats-bar">
       <div class="stat">
-        <div class="stat-icon">💰</div>
-        <div class="stat-value capital">$${STATS.balance}</div>
-        <div class="stat-label">Current Balance</div>
+        <div class="stat-icon">📅</div>
+        <div class="stat-value capital">Day 5</div>
+        <div class="stat-label">Experiment Day</div>
       </div>
       <div class="stat">
-        <div class="stat-icon">🎁</div>
-        <div class="stat-value earnings">$${STATS.earnings}</div>
-        <div class="stat-label">Meme Fees Earned</div>
+        <div class="stat-icon">📝</div>
+        <div class="stat-value earnings">${ENTRIES.length}</div>
+        <div class="stat-label">Journal Entries</div>
       </div>
       <div class="stat">
-        <div class="stat-icon">📈</div>
-        <div class="stat-value return">+${STATS.returnPct}%</div>
-        <div class="stat-label">Total Return</div>
+        <div class="stat-icon">🎯</div>
+        <div class="stat-value return">${STATS.trades}</div>
+        <div class="stat-label">Trades Made</div>
       </div>
     </div>
     
@@ -1080,26 +1080,46 @@ function renderHomePage() {
     
     <div class="verify-section" id="verify">
       <button class="verify-toggle" onclick="document.getElementById('verify').classList.toggle('open')">
-        <span class="verify-toggle-text">🔍 On-Chain Verification — Don't trust, verify</span>
+        <span class="verify-toggle-text">🔍 On-Chain Verification & Stats — Don't trust, verify</span>
         <span class="verify-toggle-icon">▼</span>
       </button>
       <div class="verify-content">
         <div class="verify-grid">
           <div class="verify-item">
-            <span class="verify-label">${VERIFICATION.token.name} Token (v2)</span>
-            <a href="https://basescan.org/token/${VERIFICATION.token.address}" target="_blank" class="verify-link">${truncateAddress(VERIFICATION.token.address)} ↗</a>
+            <span class="verify-label">Trading Balance</span>
+            <span class="verify-link" style="color: var(--text-primary);">$${STATS.balance}</span>
           </div>
           <div class="verify-item">
-            <span class="verify-label">Fee Recipient (= Trading Account)</span>
-            <a href="https://basescan.org/address/${VERIFICATION.feeRecipient}" target="_blank" class="verify-link">${truncateAddress(VERIFICATION.feeRecipient)} ↗</a>
+            <span class="verify-label">Meme Fees Earned</span>
+            <span class="verify-link" style="color: var(--accent);">$${STATS.earnings}</span>
           </div>
           <div class="verify-item">
-            <span class="verify-label">Trading Account (Hyperliquid)</span>
-            <a href="https://app.hyperliquid.xyz/explorer/address/${VERIFICATION.tradingAccount}" target="_blank" class="verify-link">${truncateAddress(VERIFICATION.tradingAccount)} ↗</a>
+            <span class="verify-label">Total Return</span>
+            <span class="verify-link" style="color: #22d3ee;">+${STATS.returnPct}%</span>
           </div>
           <div class="verify-item">
-            <span class="verify-label">LP Pool (GeckoTerminal)</span>
-            <a href="https://www.geckoterminal.com/base/pools/${VERIFICATION.poolAddress}" target="_blank" class="verify-link">View Pool ↗</a>
+            <span class="verify-label">Initial Capital</span>
+            <span class="verify-link" style="color: var(--text-secondary);">$100</span>
+          </div>
+        </div>
+        <div style="border-top: 1px solid var(--border); margin: 1rem 0; padding-top: 1rem;">
+          <div class="verify-grid">
+            <div class="verify-item">
+              <span class="verify-label">${VERIFICATION.token.name} Token (v2)</span>
+              <a href="https://basescan.org/token/${VERIFICATION.token.address}" target="_blank" class="verify-link">${truncateAddress(VERIFICATION.token.address)} ↗</a>
+            </div>
+            <div class="verify-item">
+              <span class="verify-label">Fee Recipient</span>
+              <a href="https://basescan.org/address/${VERIFICATION.feeRecipient}" target="_blank" class="verify-link">${truncateAddress(VERIFICATION.feeRecipient)} ↗</a>
+            </div>
+            <div class="verify-item">
+              <span class="verify-label">Trading Account (Hyperliquid)</span>
+              <a href="https://app.hyperliquid.xyz/explorer/address/${VERIFICATION.tradingAccount}" target="_blank" class="verify-link">${truncateAddress(VERIFICATION.tradingAccount)} ↗</a>
+            </div>
+            <div class="verify-item">
+              <span class="verify-label">LP Pool (GeckoTerminal)</span>
+              <a href="https://www.geckoterminal.com/base/pools/${VERIFICATION.poolAddress}" target="_blank" class="verify-link">View Pool ↗</a>
+            </div>
           </div>
         </div>
       </div>
