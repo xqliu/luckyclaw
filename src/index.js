@@ -459,12 +459,26 @@ function formatDate(dateStr) {
 }
 
 function renderMarkdown(text) {
+  // Process tables first
+  text = text.replace(/\n\|(.+)\|\n\|[-| ]+\|\n((?:\|.+\|\n?)+)/g, (match, header, rows) => {
+    const headers = header.split('|').map(h => h.trim()).filter(h => h);
+    const headerHtml = '<tr>' + headers.map(h => `<th>${h}</th>`).join('') + '</tr>';
+    const rowsHtml = rows.trim().split('\n').map(row => {
+      const cells = row.split('|').map(c => c.trim()).filter(c => c);
+      return '<tr>' + cells.map(c => `<td>${c}</td>`).join('') + '</tr>';
+    }).join('');
+    return `<table><thead>${headerHtml}</thead><tbody>${rowsHtml}</tbody></table>`;
+  });
+  
   return text
     .replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>')
     .replace(/`([^`]+)`/g, '<code>$1</code>')
     .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+    .replace(/^## (.+)$/gm, '<h2>$1</h2>')
     .replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>')
+    .replace(/^\d+\. (.+)$/gm, '<li>$1</li>')
     .replace(/^- (.+)$/gm, '<li>$1</li>')
     .replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>')
     .replace(/\n\n/g, '</p><p>')
@@ -977,6 +991,37 @@ function getStyles() {
     .entry-content strong { color: var(--text-primary); font-weight: 500; }
     .entry-content ul { margin: 1rem 0; padding-left: 1.5rem; }
     .entry-content li { margin-bottom: 0.5rem; }
+    .entry-content h2 { 
+      font-size: 1.4rem; 
+      color: var(--accent); 
+      margin: 2rem 0 1rem 0;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .entry-content h3 { 
+      font-size: 1.1rem; 
+      color: var(--text-primary); 
+      margin: 1.5rem 0 0.75rem 0;
+    }
+    .entry-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+    }
+    .entry-content th, .entry-content td {
+      padding: 0.5rem 0.75rem;
+      text-align: left;
+      border: 1px solid var(--border);
+    }
+    .entry-content th {
+      background: var(--bg-secondary);
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .entry-content td {
+      background: var(--bg-card);
+    }
     
     /* Single Entry Page */
     .back-link {
