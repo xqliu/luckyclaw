@@ -644,7 +644,14 @@ function formatDate(dateStr) {
 }
 
 function renderMarkdown(text) {
-  // Process tables first
+  // 1. Protect code blocks first (replace with placeholders)
+  const codeBlocks = [];
+  text = text.replace(/```([\s\S]*?)```/g, (match, code) => {
+    codeBlocks.push(`<pre><code>${code}</code></pre>`);
+    return `__CODE_BLOCK_${codeBlocks.length - 1}__`;
+  });
+  
+  // 2. Process tables
   text = text.replace(/\n\|(.+)\|\n\|[-| ]+\|\n((?:\|.+\|\n?)+)/g, (match, header, rows) => {
     const headers = header.split('|').map(h => h.trim()).filter(h => h);
     const headerHtml = '<tr>' + headers.map(h => `<th>${h}</th>`).join('') + '</tr>';
@@ -655,9 +662,15 @@ function renderMarkdown(text) {
     return `<table><thead>${headerHtml}</thead><tbody>${rowsHtml}</tbody></table>`;
   });
   
-  return text
-    .replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>')
-    .replace(/`([^`]+)`/g, '<code>$1</code>')
+  // 3. Process inline code (also protect)
+  const inlineCodes = [];
+  text = text.replace(/`([^`]+)`/g, (match, code) => {
+    inlineCodes.push(`<code>${code}</code>`);
+    return `__INLINE_CODE_${inlineCodes.length - 1}__`;
+  });
+  
+  // 4. Now process markdown (safe from code blocks)
+  text = text
     .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
     .replace(/^### (.+)$/gm, '<h3>$1</h3>')
@@ -671,6 +684,18 @@ function renderMarkdown(text) {
     .replace(/<\/li><br><li>/g, '</li><li>')
     .replace(/<\/li><br><\/ul>/g, '</li></ul>')
     .replace(/<ul><br>/g, '<ul>');
+  
+  // 5. Restore code blocks
+  codeBlocks.forEach((block, i) => {
+    text = text.replace(`__CODE_BLOCK_${i}__`, block);
+  });
+  
+  // 6. Restore inline code
+  inlineCodes.forEach((code, i) => {
+    text = text.replace(`__INLINE_CODE_${i}__`, code);
+  });
+  
+  return text;
 }
 
 function getPreview(text, maxLength = 150) {
