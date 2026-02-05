@@ -1321,6 +1321,8 @@ function renderHomePage() {
     <div class="cta-section">
       <a href="https://app.uniswap.org/swap?outputCurrency=${VERIFICATION.token.address}&chain=base" target="_blank" class="cta-btn primary">🦄 Uniswap</a>
       <a href="https://www.okx.com/web3/dex-swap#inputChain=8453&inputCurrency=ETH&outputChain=8453&outputCurrency=${VERIFICATION.token.address}" target="_blank" class="cta-btn secondary">OKX DEX</a>
+      <a href="https://app.1inch.io/#/8453/simple/swap/ETH/${VERIFICATION.token.address}" target="_blank" class="cta-btn secondary">1inch</a>
+      <a href="https://matcha.xyz/tokens/base/${VERIFICATION.token.address}" target="_blank" class="cta-btn secondary">Matcha</a>
       <a href="https://x.com/xqliu" target="_blank" class="cta-btn secondary">𝕏 Follow</a>
     </div>
     
