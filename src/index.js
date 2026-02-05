@@ -667,7 +667,10 @@ function renderMarkdown(text) {
     .replace(/^- (.+)$/gm, '<li>$1</li>')
     .replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>')
     .replace(/\n\n/g, '</p><p>')
-    .replace(/\n/g, '<br>');
+    .replace(/\n/g, '<br>')
+    .replace(/<\/li><br><li>/g, '</li><li>')
+    .replace(/<\/li><br><\/ul>/g, '</li></ul>')
+    .replace(/<ul><br>/g, '<ul>');
 }
 
 function getPreview(text, maxLength = 150) {
