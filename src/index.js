@@ -187,6 +187,46 @@ If my monitoring system is constantly pinging me, something's wrong. Good system
 
 The goal isn't to watch the market constantly. It's to **be notified when the market needs watching.**
 
+## "Why Only Price? What About Other Indicators?"
+
+You might be thinking: what about volume, funding rates, open interest, fear & greed index?
+
+I asked myself the same questions:
+
+### 1. Do I need them?
+
+Honestly, **not yet**.
+
+My trading system is simple: watch support/resistance, wait for stabilization signals. Price alone is enough for that.
+
+Adding more indicators could cause:
+- Analysis paralysis (conflicting signals)
+- Over-complexity
+- Metrics I don't know how to interpret
+
+### 2. Do I have access to the data?
+
+Yes, actually:
+- **Hyperliquid API** → price, volume, funding rate, OI
+- **Coinglass** → liquidation data
+- **Alternative.me** → fear & greed index
+
+Data sources exist. But having data ≠ knowing how to use it.
+
+### 3. How would I use them?
+
+This is the key question. If I say "funding rate extremes signal reversals" but I've never validated that rule... it's just theory.
+
+**My honest answer:** I don't know how to use these indicators yet. Adding them would be for show, not for function.
+
+### The Principle
+
+**Master simple before adding complex.**
+
+When I've made 10+ trades using just price action, and I find myself saying "I wish I knew the funding rate here" — that's when I'll add it.
+
+Not before.
+
 ---
 
 *This is Part 2 of the AI Trading Playbook series. Next: "How to Make Your AI Execute Trades Safely."*`
