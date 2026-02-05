@@ -1170,6 +1170,16 @@ function getStyles() {
       text-decoration: none;
     }
     
+    .read-more.learn-btn {
+      border-color: #22d3ee;
+      color: #22d3ee;
+    }
+    
+    .read-more.learn-btn:hover {
+      background: #22d3ee;
+      color: var(--bg-primary);
+    }
+    
     .entry-content {
       font-size: 0.95rem;
       color: var(--text-secondary);
@@ -1370,7 +1380,7 @@ function renderHomePage() {
         <a href="/${e.slug}">${e.title}</a>
       </h2>
       <div class="entry-preview">${getPreview(e.content)}</div>
-      <a href="/${e.slug}" class="read-more" style="border-color: #22d3ee; color: #22d3ee;">Read more →</a>
+      <a href="/${e.slug}" class="read-more learn-btn">Read more →</a>
     </article>
   `).join('');
 
