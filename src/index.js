@@ -23,9 +23,9 @@ const SITE_CONFIG = {
 };
 
 const STATS = {
-  balance: 220,
+  balance: 221,
   earnings: 1630,
-  returnPct: 1750,
+  returnPct: 1851,
   trades: 2,
 };
 
