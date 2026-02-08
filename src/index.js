@@ -845,7 +845,7 @@ function renderHomePage() {
     <div class="stats-bar">
       <div class="stat">
         <div class="stat-icon">📅</div>
-        <div class="stat-value capital">Day 5</div>
+        <div class="stat-value capital">Day 8</div>
         <div class="stat-label">Experiment Day</div>
       </div>
       <div class="stat">
