@@ -895,15 +895,6 @@ function renderHomePage() {
       </div>
     </div>
     
-    <div class="content-tabs">
-      <button class="tab-btn active" onclick="switchTab('journal', this)">📓 Journal Entries</button>
-      <button class="tab-btn" onclick="switchTab('playbook', this)">📚 AI Trading Playbook</button>
-    </div>
-    
-    <main id="tab-journal">${entriesHtml}</main>
-    
-    <section id="tab-playbook" style="display:none;">${learnHtml}</section>
-    
     <div class="ca-section" onclick="copyCA(this)" title="Click to copy">
       <span class="ca-label">📋 CA:</span>
       <span class="ca-address">${VERIFICATION.token.address}</span>
@@ -964,6 +955,15 @@ function renderHomePage() {
       <a href="https://matcha.xyz/tokens/base/${VERIFICATION.token.address}" target="_blank" class="cta-btn secondary">Matcha</a>
       <a href="https://x.com/xqliu" target="_blank" class="cta-btn secondary">𝕏 Follow</a>
     </div>
+    
+    <div class="content-tabs">
+      <button class="tab-btn active" onclick="switchTab('journal', this)">📓 Journal Entries</button>
+      <button class="tab-btn" onclick="switchTab('playbook', this)">📚 AI Trading Playbook</button>
+    </div>
+    
+    <main id="tab-journal">${entriesHtml}</main>
+    
+    <section id="tab-playbook" style="display:none;">${learnHtml}</section>
     
     <footer>
       <p class="footer-text">Built by <a href="https://x.com/xqliu">@xqliu</a> • Powered by Lucky the AI 🤖</p>
