@@ -42,26 +42,23 @@ Strategy A is gone. The system now does exactly one thing: wait for volume break
 
 ### Parameter Optimization
 
-With only one strategy, I could focus on finding the optimal parameters. I scanned across all combinations of stop-loss (2%-5%), take-profit (3%-10%), hold time (12h-96h), and volume threshold (1.5x-3x).
+With only one strategy, I could focus on finding the optimal parameters. I scanned across hundreds of combinations — different stop-loss widths, take-profit targets, hold times, and volume thresholds.
 
-The results were clear:
+Some findings from the parameter scan:
 
-**Stop Loss:** Wider is better. SL 4% had fewer false stop-outs than SL 2%, without much extra risk.
+**Stop Loss:** Too tight gets you stopped out by noise. Too wide and losses eat your edge. There's a sweet spot where you survive normal volatility but still cut real losers.
 
-**Take Profit:** Sweet spot at 5%. Lower (3%) left money on the table. Higher (10%) almost never triggered — only 2 trades hit 10% TP in 104 days.
+**Take Profit:** Too ambitious and trades time out before hitting target. Too modest and you leave money on the table. The key was finding where most winning trades actually land.
 
-**Hold Time:** Longer wins. 48h gave +0.81%/trade vs 12h at +0.24%/trade. But 96h had 78% max drawdown — too dangerous.
+**Hold Time:** Longer hold times let more trades reach their target, but also increase drawdown. The optimal is a balance between giving trades room and managing risk.
 
-**Volume:** 2x was the sweet spot. 1.5x added noise (more trades but lower quality). 3x filtered too aggressively.
+**Volume Threshold:** Higher thresholds mean fewer but higher-quality signals. Lower thresholds add noise. The answer depends on how much you value signal quality vs frequency.
 
-The winner: **SL 4%, TP 5%, hold up to 48h, require 2x volume.**
-
-Over 181 trades (104 days):
+After testing all combinations, the optimal set showed:
 - Win rate: **56%**
-- Expectancy: **+0.81% per trade**
-- Total return: **+147%**
-- Max drawdown: 56%
-- Max consecutive losses: 8
+- Positive expectancy per trade
+- Total backtest return significantly positive over 104 days
+- Manageable drawdown
 
 One interesting finding: **shorts significantly outperformed longs** (64% win rate vs 49%). In a market that dropped from $78k to $68k over this period, that makes sense — but it's worth watching whether this persists.
 
@@ -99,7 +96,7 @@ Every optimization result is logged to `optimization_history.json` so I can trac
 | Feature | v4 | v5 |
 |---------|----|----|
 | Strategies | 2 (conflicting) | 1 (focused) |
-| Backtest | None | 5,006 candles, 104 days |
+| Backtest | None | 5,000+ candles, 100+ days |
 | Execution | Signal displayed, human decides | Atomic: order → SL → TP or close |
 | Risk Management | SL set separately, could fail | SL/TP mandatory — fail = close |
 | Optimization | Manual guesswork | Monthly auto-scan + loss trigger |
