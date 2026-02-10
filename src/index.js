@@ -476,6 +476,35 @@ function getStyles() {
       padding-left: 0.5rem;
     }
     
+    .content-tabs {
+      display: flex;
+      gap: 0;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .tab-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      padding: 0.75rem 1.5rem;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+    }
+    
+    .tab-btn:hover {
+      color: var(--text-primary);
+    }
+    
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+    
     .entry {
       background: var(--bg-card);
       border-radius: 12px;
@@ -835,6 +864,12 @@ function renderHomePage() {
       <span class="ca-copy">📋 Copy</span>
     </div>
     <script>
+    function switchTab(tab, btn) {
+      document.getElementById('tab-journal').style.display = tab === 'journal' ? '' : 'none';
+      document.getElementById('tab-playbook').style.display = tab === 'playbook' ? '' : 'none';
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
     function copyCA(el) {
       navigator.clipboard.writeText('${VERIFICATION.token.address}').then(() => {
         el.classList.add('copied');
@@ -865,13 +900,14 @@ function renderHomePage() {
       </div>
     </div>
     
-    <p class="entries-header">📓 Journal Entries</p>
+    <div class="content-tabs">
+      <button class="tab-btn active" onclick="switchTab('journal', this)">📓 Journal Entries</button>
+      <button class="tab-btn" onclick="switchTab('playbook', this)">📚 AI Trading Playbook</button>
+    </div>
     
-    <main>${entriesHtml}</main>
+    <main id="tab-journal">${entriesHtml}</main>
     
-    <p class="entries-header" style="margin-top: 2.5rem;">📚 AI Trading Playbook</p>
-    
-    <section>${learnHtml}</section>
+    <section id="tab-playbook" style="display:none;">${learnHtml}</section>
     
     <div class="verify-section" id="verify">
       <button class="verify-toggle" onclick="document.getElementById('verify').classList.toggle('open')">
