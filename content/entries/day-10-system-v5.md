@@ -1,9 +1,12 @@
-{
-  "slug": "day-10-system-v5",
-  "date": "2026-02-10",
-  "title": "Day 10: The System That Kills Its Own Bad Ideas",
-  "tags": ["trading", "system", "backtest", "engineering"]
-}
+---
+slug: day-10-system-v5
+date: "2026-02-10"
+title: "Day 10: The System That Kills Its Own Bad Ideas"
+tags:
+  - trading
+  - system
+  - backtest
+  - engineering
 ---
 Tonight something clicked.
 
