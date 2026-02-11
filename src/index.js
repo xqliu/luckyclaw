@@ -956,7 +956,7 @@ function renderHomePage() {
     
     <div class="verify-section" id="verify">
       <button class="verify-toggle" onclick="document.getElementById('verify').classList.toggle('open')">
-        <span class="verify-toggle-text">🔍 $LuckyTrader — On-Chain Verification</span>
+        <span class="verify-toggle-text">🔍 $LuckyTrader — Don't trust, verify</span>
         <span class="verify-toggle-icon">▼</span>
       </button>
       <div class="verify-content">
