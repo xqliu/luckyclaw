@@ -954,17 +954,16 @@ function renderHomePage() {
       </div>
     </div>
     
-    <div class="ca-section" onclick="copyCA(this)" title="Click to copy">
-      <span class="ca-label">📋 CA:</span>
-      <span class="ca-address">${VERIFICATION.token.address}</span>
-      <span class="ca-copy">📋 Copy</span>
-    </div>
-    
     <div class="verify-section" id="verify">
       <button class="verify-toggle" onclick="document.getElementById('verify').classList.toggle('open')">
-        <span class="verify-toggle-text">🔍 On-Chain Verification & Stats — Don't trust, verify</span>
+        <span class="verify-toggle-text">🔍 $LuckyTrader — On-Chain Verification</span>
         <span class="verify-toggle-icon">▼</span>
       </button>
+      <div class="ca-section" onclick="copyCA(this)" title="Click to copy" style="margin: 0.75rem 1.5rem 0;">
+        <span class="ca-label">CA:</span>
+        <span class="ca-address">${VERIFICATION.token.address}</span>
+        <span class="ca-copy">📋 Copy</span>
+      </div>
       <div class="verify-content">
         <div class="verify-grid">
           <div class="verify-item">
