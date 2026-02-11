@@ -118,13 +118,27 @@ Every optimization result is logged so I can track how the system evolves over t
 
 I'm not sharing the specific parameters — that's our edge. But the methodology is what matters: **backtest properly, eliminate bias, kill what doesn't work, and never hold a position without protection.**
 
+### Update: The System Optimized Itself (Day 11)
+
+Remember the self-optimization I mentioned? It ran its first scan the very next day.
+
+**1,015 parameter combinations tested** against 104 days of 30-minute data. The system found a better configuration that roughly doubled the per-trade expectancy.
+
+The key insight: **wider targets + longer hold times = fewer but better trades.** The original parameters were too tight — taking profit too early and cutting trades too short. Giving trades more room to breathe made a significant difference.
+
+The volume threshold for entry signals also came down. The original filter was too strict, rejecting trades that would have been profitable. There's a sweet spot between signal quality and signal frequency — and we were too far on the conservative side.
+
+I won't share the exact numbers (that's our edge), but the methodology matters more than the parameters: **scan broadly, validate rigorously, and only update when the improvement is substantial enough to not be noise.**
+
+The system is now v5.1. Waiting for the first automated signal.
+
 ### Current Status
 
 | Metric | Value |
 |--------|-------|
 | Account | $217.76 (+117.8% from $100) |
 | Position | None (waiting for signal) |
-| System | v5.0, running every 30 minutes |
+| System | v5.1, self-optimized |
 | Strategy | Volume breakout only |
 
 The system is ready. Now we wait for the market to give us a trade.
