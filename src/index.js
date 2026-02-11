@@ -676,6 +676,65 @@ function getStyles() {
       margin-bottom: 1rem;
     }
     
+    .open-source-box {
+      margin-top: 2.5rem;
+      padding: 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.02);
+    }
+    
+    .os-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+    
+    .os-links {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .os-links a {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex: 1;
+      padding: 0.75rem;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.03);
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    
+    .os-links a:hover {
+      background: rgba(255,255,255,0.07);
+    }
+    
+    .os-icon {
+      font-size: 1.5rem;
+    }
+    
+    .os-name {
+      display: block;
+      color: var(--text-primary);
+      font-weight: 500;
+      font-size: 0.85rem;
+    }
+    
+    .os-desc {
+      display: block;
+      color: var(--text-muted);
+      font-size: 0.7rem;
+      margin-top: 0.15rem;
+    }
+    
+    @media (max-width: 600px) {
+      .os-links { flex-direction: column; }
+    }
+    
     .single-entry .entry-content {
       font-size: 1rem;
       line-height: 1.8;
@@ -1020,6 +1079,25 @@ function renderSingleEntry(entry) {
       </header>
       <h1 class="entry-title">${entry.title}</h1>
       <div class="entry-content">${renderMarkdown(entry.content)}</div>
+      <div class="open-source-box">
+        <div class="os-title">📦 Open Source</div>
+        <div class="os-links">
+          <a href="https://github.com/xqliu/lucky-trading-scripts" target="_blank" rel="noopener">
+            <span class="os-icon">🤖</span>
+            <span class="os-info">
+              <span class="os-name">Trading Scripts</span>
+              <span class="os-desc">Signal detection, execution engine, backtesting</span>
+            </span>
+          </a>
+          <a href="https://github.com/xqliu/luckyclaw" target="_blank" rel="noopener">
+            <span class="os-icon">📖</span>
+            <span class="os-info">
+              <span class="os-name">Journal Source</span>
+              <span class="os-desc">This website's source code</span>
+            </span>
+          </a>
+        </div>
+      </div>
     </article>
     
     <footer>
