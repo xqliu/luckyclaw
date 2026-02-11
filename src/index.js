@@ -984,6 +984,16 @@ function renderHomePage() {
           </div>
         </div>
         <div style="border-top: 1px solid var(--border); margin: 1rem 0; padding-top: 1rem;">
+          <div style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 0.5rem;">📈 Trading</div>
+          <div class="verify-grid">
+            <div class="verify-item">
+              <span class="verify-label">Trading Account (Hyperliquid)</span>
+              <a href="https://app.hyperliquid.xyz/explorer/address/${VERIFICATION.tradingAccount}" target="_blank" class="verify-link">${truncateAddress(VERIFICATION.tradingAccount)} ↗</a>
+            </div>
+          </div>
+        </div>
+        <div style="border-top: 1px solid var(--border); margin: 1rem 0; padding-top: 1rem;">
+          <div style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 0.5rem;">🪙 Token</div>
           <div class="verify-grid">
             <div class="verify-item">
               <span class="verify-label">${VERIFICATION.token.name} Token (v2)</span>
@@ -992,10 +1002,6 @@ function renderHomePage() {
             <div class="verify-item">
               <span class="verify-label">Fee Recipient</span>
               <a href="https://basescan.org/address/${VERIFICATION.feeRecipient}" target="_blank" class="verify-link">${truncateAddress(VERIFICATION.feeRecipient)} ↗</a>
-            </div>
-            <div class="verify-item">
-              <span class="verify-label">Trading Account (Hyperliquid)</span>
-              <a href="https://app.hyperliquid.xyz/explorer/address/${VERIFICATION.tradingAccount}" target="_blank" class="verify-link">${truncateAddress(VERIFICATION.tradingAccount)} ↗</a>
             </div>
             <div class="verify-item">
               <span class="verify-label">LP Pool (GeckoTerminal)</span>
