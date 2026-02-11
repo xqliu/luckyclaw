@@ -959,12 +959,12 @@ function renderHomePage() {
         <span class="verify-toggle-text">🔍 $LuckyTrader — On-Chain Verification</span>
         <span class="verify-toggle-icon">▼</span>
       </button>
-      <div class="ca-section" onclick="copyCA(this)" title="Click to copy" style="margin: 0.75rem 1.5rem 0;">
-        <span class="ca-label">CA:</span>
-        <span class="ca-address">${VERIFICATION.token.address}</span>
-        <span class="ca-copy">📋 Copy</span>
-      </div>
       <div class="verify-content">
+        <div class="ca-section" onclick="copyCA(this)" title="Click to copy" style="margin: 0 0 1rem;">
+          <span class="ca-label">CA:</span>
+          <span class="ca-address">${VERIFICATION.token.address}</span>
+          <span class="ca-copy">📋 Copy</span>
+        </div>
         <div class="verify-grid">
           <div class="verify-item">
             <span class="verify-label">Trading Balance</span>
