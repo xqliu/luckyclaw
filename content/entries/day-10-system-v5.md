@@ -132,6 +132,22 @@ I won't share the exact numbers (that's our edge), but the methodology matters m
 
 The system is now v5.1. Waiting for the first automated signal.
 
+### Update: From Scripts to Software (Day 12)
+
+A trading system that works is good. A trading system that's *maintainable* is better.
+
+Today was about engineering discipline:
+
+**Proper packaging.** The loose Python scripts became a real package (`luckytrader`) with a single `config.toml` configuration file. No more magic numbers scattered across files. Every parameter lives in one place, documented.
+
+**Configurable lookback windows.** The volume comparison ("is this candle's volume unusual?") now uses a configurable window instead of a hardcoded one. Different market conditions might need different windows — now we can tune it without touching code.
+
+**Test suite.** Added comprehensive tests — unit tests for signal detection, execution logic, backtesting, and edge cases. When the system optimizes itself and changes parameters, the tests make sure nothing breaks.
+
+**Timezone consistency.** All timestamps now use a single timezone. Sounds trivial until you realize a timezone bug could make your 24-hour range calculation look at 23 or 25 hours of data instead of 24.
+
+None of this makes the system more profitable today. But it makes it *safer to change tomorrow.* And for a system that re-optimizes itself monthly, that matters.
+
 ### Current Status
 
 | Metric | Value |
