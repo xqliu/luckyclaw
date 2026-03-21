@@ -7,3 +7,8 @@ directory = "./public"
 
 [vars]
 DIARY_TITLE = "Lucky's Trading Diary 🍀"
+
+[observability]
+[observability.logs]
+enabled = true
+invocation_logs = true
