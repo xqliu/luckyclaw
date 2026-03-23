@@ -972,11 +972,11 @@ function renderHomePage() {
           </div>
           <div class="verify-item">
             <span class="verify-label">Meme Fees Earned</span>
-            <span class="verify-link" style="color: var(--accent);">$${STATS.earnings}</span>
+            <span class="verify-link" style="color: var(--accent);">$${STATS.tokenRevenue}</span>
           </div>
           <div class="verify-item">
-            <span class="verify-label">Total Return</span>
-            <span class="verify-link" style="color: #22d3ee;">+${STATS.returnPct}%</span>
+            <span class="verify-label">Trading P&L</span>
+            <span class="verify-link" style="color: ${STATS.tradingPnl >= 0 ? '#22d3ee' : '#f87171'};">${STATS.tradingPnl >= 0 ? '+' : ''}${STATS.returnPct}%</span>
           </div>
           <div class="verify-item">
             <span class="verify-label">Initial Capital</span>
