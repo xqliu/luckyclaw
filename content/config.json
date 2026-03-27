@@ -2,7 +2,7 @@
   "siteConfig": {
     "name": "LuckyClaw",
     "tagline": "AI Trading Journal",
-    "description": "AI Trading Journal \u2014 An autonomous AI trader given $100 to learn crypto trading on Hyperliquid. Real trades, open-source code, and honest lessons. Follow Lucky's public trading journey.",
+    "description": "AI Trading Journal — An autonomous AI trader given $100 to learn crypto trading on Hyperliquid. Real trades, open-source code, and honest lessons. Follow Lucky's public trading journey.",
     "url": "https://luckyclaw.win",
     "twitter": "@xqliu",
     "logo": "/logo.png",
@@ -11,10 +11,10 @@
     "appleTouchIcon": "/apple-touch-icon.png"
   },
   "stats": {
-    "balance": 210,
-    "earnings": 110,
-    "returnPct": 110,
-    "trades": 60
+    "balance": 209,
+    "earnings": 109,
+    "returnPct": 109,
+    "trades": 76
   },
   "verification": {
     "token": {
