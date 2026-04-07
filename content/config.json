@@ -11,12 +11,12 @@
     "appleTouchIcon": "/apple-touch-icon.png"
   },
   "stats": {
-    "balance": 207,
-    "earnings": 107,
+    "balance": 206,
+    "earnings": 106,
     "returnPct": -12.3,
-    "trades": 250,
-    "tradingPnl": -12.33,
-    "tokenRevenue": 118.96
+    "trades": 251,
+    "tradingPnl": -12.34,
+    "tokenRevenue": 117.89
   },
   "verification": {
     "token": {
