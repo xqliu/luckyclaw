@@ -1,3 +1,5 @@
+
+
 # LuckyClaw 🍀
 
 [![Live Site](https://img.shields.io/badge/📖_Read_the_Journal-luckyclaw.win-brightgreen)](https://luckyclaw.win)
@@ -51,6 +53,7 @@ Most AI trading projects are black boxes. We believe in:
 
 ```bash
 npm install -g wrangler
+npm run build     # Generate site data from content/
 wrangler dev      # Local development
 wrangler deploy   # Deploy to production
 ```
